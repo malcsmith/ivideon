@@ -35,11 +35,8 @@ RUN wget http://packages.ivideon.com/public/keys/ivideon.list -O /etc/apt/source
 #    apt-get install -y \
 #    ivideon-server
 
-# Install iVideon
-RUN apt-get update && \
-    apt-get install -y \
-    ivideon-server-headless
-    
+
+
 # Cleanup
 RUN apt-get clean
 
