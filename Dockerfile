@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 MAINTAINER malcsmith
 
@@ -28,7 +28,8 @@ VOLUME ["/video_archive"]
 # Prepare iVideon repository
 RUN wget http://packages.ivideon.com/public/keys/ivideon.list -O /etc/apt/sources.list.d/ivideon.list && \
     wget -O - http://packages.ivideon.com/public/keys/ivideon.key | apt-key add - && \
-    apt-get update
+    apt-get update && apt-get install -y ivideon-server-headless \
+&& rm -rf /var/lib/apt/lists/*
 
 # Install iVideon
 #RUN apt-get update && \
