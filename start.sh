@@ -13,7 +13,9 @@ if [ ! -f "/etc/init.d/videoserverd_ctl" ]; then
     # Sleep for a few seconds to let the user see the message above
     sleep 3
 
-    apt-get update -qq && apt-get install -qqy ivideon-server
+#    apt-get update -qq && apt-get install -qqy ivideon-server
+        apt-get update -qq && apt-get install -y ivideon-server-headless
+
 fi
 
 # Start iVideon server with or without the web interface

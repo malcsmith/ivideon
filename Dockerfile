@@ -2,6 +2,8 @@ FROM ubuntu:16.04
 
 MAINTAINER malcsmith
 
+ENV DEBIAN_FRONTEND="noninteractive"
+
 # Run a quick apt-get update/upgrade
 RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y --purge
 
@@ -18,7 +20,7 @@ USER root
 ENV USER "root"
 ENV TZ="Europe/London"
 ENV ENABLE_WEB_INTERFACE="true"
-ENV DEBIAN_FRONTEND="noninteractive"
+
 
 # Setup volumes
 #VOLUME ["/data"]
@@ -28,8 +30,7 @@ VOLUME ["/video_archive"]
 # Prepare iVideon repository
 RUN wget http://packages.ivideon.com/public/keys/ivideon.list -O /etc/apt/sources.list.d/ivideon.list && \
     wget -O - http://packages.ivideon.com/public/keys/ivideon.key | apt-key add - && \
-    apt-get update && apt-get install -y ivideon-server-headless \
-&& rm -rf /var/lib/apt/lists/*
+    apt-get update 
 
 # Install iVideon
 #RUN apt-get update && \
