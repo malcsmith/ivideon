@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:12.04
 
 MAINTAINER malcsmith
 
@@ -11,6 +11,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y --purge
 RUN apt-get update && \
     apt-get install -y \
     wget \
+    python-tornado \
+    python-netaddr \
     psmisc
 
 # Run as root
